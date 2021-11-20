@@ -5,11 +5,20 @@ apply plugin: 'java'
 apply plugin: 'java-library'
 apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
-apply plugin: 'org.sonarqube'
 
 tasks.withType(Test){
     systemProperties = System.properties
     maxParallelForks = Runtime.runtime.availableProcessors()
+}
+
+plugins {
+  id "org.sonarqube" version "3.3"
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "ejemplo1"
+  }
 }
 
 repositories {
